@@ -1,154 +1,226 @@
 ﻿// See https://aka.ms/new-console-template for more information
 Console.WriteLine("Hello, World!");
+// 1. ödev
+Console.Write("Bir sayı giriniz: ");
+int sayi = Convert.ToInt32(Console.ReadLine());
+int toplam = 0;
 
-
-//1. ödev 
-
-
-Console.WriteLine("bir sayı giriniz");
-int sayı = Convert.ToInt32(Console.ReadLine());
-if (sayı < 0 )
+for (int temp = Math.Abs(sayi); temp > 0; temp /= 10)
 {
-    Console.WriteLine("sayınız negatif");
-}
-else if (sayı > 0)
-{
-    Console.WriteLine("sayınız pozitif");
-}
-else if (0 == sayı)
-{
-    Console.WriteLine("sayınız 0'a eşit");
+    toplam += temp % 10;
 }
 
-*/
-//2. ödev
+Console.WriteLine("Rakamların toplamı: " + toplam);
 
-Console.WriteLine("1-7 arasından bir sayı girin");
-int day = Convert.ToInt32(Console.ReadLine());
 
-switch (day)
+
+// 2. ödev
+
+int sayi;
+
+while (true)
 {
-    case 1: Console.WriteLine("seçilen gün Pazartesi"); break;
-    case 2: Console.WriteLine("seçilen gün Salı"); break;
-    case 3: Console.WriteLine("seçilen gün Çarşamba"); break;
-    case 4: Console.WriteLine("seçilen gün Perşembe"); break;
-    case 5: Console.WriteLine("seçilen gün Cuma"); break;
-    case 6: Console.WriteLine("seçilen gün Cumartesi"); break;
-    case 7: Console.WriteLine("seçilen gün Pazar"); break;
-    default: Console.WriteLine("geçerli bir numara değildir"); break;
-}
+    Console.Write("10 ile 100 arasında bir sayı giriniz: ");
+    sayi = Convert.ToInt32(Console.ReadLine());
 
-
-//3. ödev
-Console.WriteLine("işlem yapmak istediğiniz ilk sayıyı giriniz");
-double num1 = Convert.ToDouble(Console.ReadLine());
-
-Console.WriteLine("işlem yapmak istediğiniz ikinci sayıyı giriniz");
-double num2 = Convert.ToDouble(Console.ReadLine());
-double sonuç = 0 ;
-
-Console.WriteLine("işlem türünü seçin => (+, -, *, /):");
-string işlem=Convert.ToString(Console.ReadLine());
-
-
-switch (işlem)
-{
-    case "+":
-
-        sonuç = num1 + num2;
-        Console.WriteLine($"Sonuç: {num1} + {num2}= {sonuç}");
-        break;
-
-    case "-":
-
-        sonuç = num1 - num2;
-        Console.WriteLine($"sonuç:{num1}-{num2}={sonuç}");
-        break;
-
-    case "*":
-        sonuç = num1 * num2;
-        Console.WriteLine($"sonuç:{num1}*{num2}={sonuç}");
-        break;
-
-    case "/":
-    
-        if (num2 == 0)
-        {
-            Console.WriteLine("Hata: Bir sayıyı sıfıra bölemezsiniz!");
-        }
-        else
-        {
-            sonuç = num1 / num2;
-            Console.WriteLine($"Sonuç: {num1} / {num2} = {sonuç}");
-        }
-        break;
-
-    default:
-        Console.WriteLine("geçersiz bir işlem türü seçtiniz");
-        break;
-
-
-}
- 
-
-//4. ödev
- Console.Write("Birinci sayıyı girin: ");
-int sayi1 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("İkinci sayıyı girin: ");
-int sayi2 = Convert.ToInt32(Console.ReadLine());
-
-Console.Write("Üçüncü sayıyı girin: ");
-int sayi3 = Convert.ToInt32(Console.ReadLine());
-
-
-int enBuyuk = sayi1;
-
-if (sayi2 > enBuyuk)
- {
-   enBuyuk = sayi2;
- }
-if (sayi3 > enBuyuk)
-{
-   enBuyuk = sayi3;
-}
-
-
-Console.WriteLine("En büyük sayı: " + enBuyuk);
-
-//5.ödev
-
-Console.Write("lütfen giriş yapmak için şifre oluşturun: ");
-string sifre = Console.ReadLine();
-
- if (sifre.Length < 8)
- {
-    Console.WriteLine(" Şifreniz 8 karakter veya daha fazla olmalı");
- }
- else if (!(sifre.Contains("@") || sifre.Contains("#") || sifre.Contains("$") || sifre.Contains("%")))
-{
-    Console.WriteLine(" Şifrenizde bu özel karakterlerin en az birini içermesi gerekir=> (@, #, $, %)");
-}
-else
-{
-    bool buyukHarf = false;
-
-    for (int i = 0; i < sifre.Length; i++)
+    if (sayi >= 10 && sayi <= 100)
     {
-        if (char.IsUpper(sifre[i]))
-        {
-            buyukHarf = true;
-            break;
-        }
-    }
-
-    if (!buyukHarf)
-    {
-        Console.WriteLine(" Şifrenizde büyük harf olmalı");
+        Console.WriteLine("Geçerli sayı girdiniz: " + sayi);
+        break; 
     }
     else
     {
-        Console.WriteLine("tebrikler güçlü bir şifreniz var");
+        Console.WriteLine("Hatalı giriş! Lütfen 10 ile 100 arasında bir sayı giriniz.");
     }
 }
 
+//3. ödev
+int[] yaslar = { 5, 16, 25, 40, 70, 12, 19, 65 }; 
+
+foreach (int yas in yaslar)
+{
+    string kategori;
+
+    if (yas >= 0 && yas <= 12)
+        kategori = "Çocuk";
+    else if (yas >= 13 && yas <= 19)
+        kategori = "Genç";
+    else if (yas >= 20 && yas <= 64)
+        kategori = "Yetişkin";
+    else
+        kategori = "Yaşlı";
+
+    Console.WriteLine($"Yaş: {yas} - Kategori: {kategori}");
+}
+//4.ödev 
+int[] dizi = { 1, 2, 3, 4, 5, 6, 3, 2, 7, 8, 9, 1 };
+
+
+HashSet<int> tekrarEdenler = new HashSet<int>();
+HashSet<int> bulunanlar = new HashSet<int>();
+foreach (int eleman in dizi)
+{
+    if (!bulunanlar.Add(eleman))
+    {
+        tekrarEdenler.Add(eleman);
+    }
+}
+
+
+Console.WriteLine("Tekrar eden elemanlar:");
+foreach (int eleman in tekrarEdenler)
+{
+    Console.WriteLine(eleman);
+}
+
+//5. ödev
+
+
+   string[] kelimeler = { "elma", "armut", "kiraz", "çilek", "karpuz", "muz", "şeftali", "üzüm" };
+
+   if (kelimeler.Length == 0)
+   {
+       Console.WriteLine("Dizi boş!");
+       return;
+   }
+
+   string enUzun = kelimeler[0];
+   string enKisa = kelimeler[0];
+
+   foreach (string kelime in kelimeler)
+   {
+       if (kelime.Length > enUzun.Length)
+           enUzun = kelime;
+
+       if (kelime.Length < enKisa.Length)
+           enKisa = kelime;
+   }
+
+   Console.WriteLine($"En Uzun Kelime: {enUzun}");
+   Console.WriteLine($"En Kısa Kelime: {enKisa}");
+
+//6. ödev
+Console.Write("Bir cümle giriniz: ");
+string cumle = Console.ReadLine();
+
+
+string[] kelimeler = cumle.Split(' ');
+
+
+Array.Sort(kelimeler);
+
+
+Console.WriteLine("\nAlfabetik sıralanmış kelimeler:");
+foreach (string kelime in kelimeler)
+{
+    Console.WriteLine(kelime);
+}
+
+//7. ödev
+List<string> kelimelerListesi = new List<string> { "elma", "armut", "muz" };
+
+
+Console.WriteLine("Yeni kelime giriniz (bitirmek için 'quit' yazın):");
+string input;
+
+
+while ((input = Console.ReadLine()) != "quit")
+{
+    kelimelerListesi.Add(input); 
+}
+
+
+Console.WriteLine("\nKelime Listesi:");
+foreach (var kelime in kelimelerListesi)
+{
+    Console.WriteLine(kelime);
+}
+
+//8. ödev
+List<string> kelimelerListesi = new List<string>();
+
+Console.WriteLine("Kelimeleri giriniz (bitirmek için 'quit' yazın):");
+string input;
+
+while ((input = Console.ReadLine()) != "quit")
+{
+    kelimelerListesi.Add(input); // Listeye yeni kelime ekle
+}
+
+Console.WriteLine("\nKelimeler Tersten:");
+kelimelerListesi.Reverse();
+foreach (var kelime in kelimelerListesi)
+{
+    Console.WriteLine(kelime); 
+}
+
+//9. ödev
+List<int> sayilarListesi = new List<int>();
+string input;
+
+Console.WriteLine("Sayılara başlayın (bitirmek için 'quit' yazın):");
+
+while (true)
+{
+    Console.Write("Bir sayı girin: ");
+    input = Console.ReadLine();
+
+    if (input.ToLower() == "quit") 
+        break;
+
+    if (int.TryParse(input, out int sayi)) 
+    {
+        sayilarListesi.Add(sayi);
+    }
+    else
+    {
+        Console.WriteLine("Geçerli bir sayı giriniz.");
+    }
+}
+
+if (sayilarListesi.Count > 0)
+{
+    double ortalama = sayilarListesi.Average();
+    Console.WriteLine("\nSayılarnın Ortalaması: " + ortalama);
+}
+else
+{
+    Console.WriteLine("\nHiç sayı girilmedi.");
+    return;
+}
+
+sayilarListesi.Sort();
+
+Console.WriteLine("\nSayılara küçükten büyüğe sıralı olarak:");
+foreach (var sayi in sayilarListesi)
+{
+    Console.WriteLine(sayi);
+}
+//10. ödev
+List<int> sayilarListesi = new List<int> { 5, 12, 3, 18, 9, 20, 7, 15 };
+
+sayilarListesi.RemoveAll(sayi => sayi < 10);
+
+Console.WriteLine("10'dan büyük olan sayılar:");
+foreach (var sayi in sayilarListesi)
+{
+    Console.WriteLine(sayi);
+}
+
+
+//11. ödev
+List<int> ogrenciNotlari = new List<int> { 40, 55, 70, 45, 30, 60, 85, 20 };
+
+for (int i = 0; i < ogrenciNotlari.Count; i++)
+{
+    if (ogrenciNotlari[i] < 50)
+    {
+        ogrenciNotlari[i] = 50; 
+    }
+}
+
+Console.WriteLine("Güncellenen Öğrenci Notları:");
+foreach (var notu in ogrenciNotlari)
+{
+    Console.WriteLine(notu);
+}
